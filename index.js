@@ -9,7 +9,7 @@ wss.on('connection', (ws) => {
    clients.push(ws);
    console.log(`Client connected: ${clients.length}`);
 
-   ws.on("scraper", (message)=> {
+   ws.on("message", (message)=> {
        clients.forEach((client) => {
            if (client !== ws && client.readyState === WebSocket.OPEN) {
                client.send(message);
